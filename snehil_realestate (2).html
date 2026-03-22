@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snehil Real Estate – Find Your Dream Property in Pune</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #122040;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e9c8;
+    --cream: #faf7f0;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #4a5568;
+    --text-light: #8a97a8;
+    --border: rgba(201,168,76,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span { color: var(--white); font-weight: 300; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none; font-size: 0.85rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    border: none; padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.82rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(201,168,76,0.03) 0, rgba(201,168,76,0.03) 1px, transparent 0, transparent 50%);
+    background-size: 40px 40px;
+  }
+  .hero-glow {
+    position: absolute; top: -200px; right: -100px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    padding: 6px 16px; margin-bottom: 32px;
+    font-size: 0.75rem; color: var(--gold);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+    animation: blink 1.8s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 600; line-height: 1.1;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .hero-h1 em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 1.05rem; color: rgba(255,255,255,0.6);
+    line-height: 1.7; margin: 24px 0 44px;
+    max-width: 440px;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 15px 36px; font-weight: 600;
+    font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; border: 2px solid var(--gold);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: transparent; color: var(--gold); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 15px 36px; font-weight: 500;
+    font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; border: 2px solid rgba(255,255,255,0.25);
+    transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--gold); line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.78rem; color: rgba(255,255,255,0.45);
+    margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .hero-right {
+    position: relative; height: 100vh;
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover; opacity: 0.45;
+  }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, var(--navy) 0%, rgba(10,22,40,0.3) 50%, transparent 100%);
+  }
+  .hero-property-badge {
+    position: absolute; bottom: 60px; right: 40px;
+    background: rgba(10,22,40,0.9);
+    border: 1px solid var(--border);
+    padding: 20px 28px; backdrop-filter: blur(10px);
+  }
+  .hpb-label { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+  .hpb-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 700; color: var(--white);
+    margin: 4px 0;
+  }
+  .hpb-loc { font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.16em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; width: 30px; height: 1px; background: var(--gold);
+  }
+  .section-h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600; line-height: 1.15; color: var(--navy);
+  }
+  .section-h2.light { color: var(--white); }
+  .section-h2 em { font-style: italic; color: var(--gold); }
+
+  /* ── FEATURED PROPERTIES ── */
+  #properties { background: var(--cream); }
+  .prop-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 56px;
+  }
+  .prop-header-right { display: flex; gap: 10px; }
+  .filter-btn {
+    background: transparent; border: 1px solid rgba(10,22,40,0.2);
+    padding: 8px 20px; font-size: 0.8rem;
+    letter-spacing: 0.06em; cursor: pointer;
+    color: var(--text-mid); font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--navy); color: var(--gold); border-color: var(--navy);
+  }
+
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .prop-card {
+    background: var(--white);
+    border: 1px solid rgba(10,22,40,0.06);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .prop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(10,22,40,0.12);
+  }
+  .prop-img-wrap { position: relative; overflow: hidden; height: 220px; }
+  .prop-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .prop-card:hover .prop-img { transform: scale(1.06); }
+  .prop-tag {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--gold); color: var(--navy);
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px;
+  }
+  .prop-tag.rent { background: var(--navy); color: var(--gold); }
+  .prop-rera {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(10,22,40,0.85);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.62rem; letter-spacing: 0.06em;
+    padding: 4px 10px; backdrop-filter: blur(4px);
+  }
+  .prop-body { padding: 24px; }
+  .prop-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .prop-name { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; }
+  .prop-loc { font-size: 0.82rem; color: var(--text-light); margin-bottom: 16px; display: flex; align-items: center; gap: 4px; }
+  .prop-details {
+    display: flex; gap: 16px;
+    padding-top: 16px; border-top: 1px solid rgba(10,22,40,0.06);
+  }
+  .prop-detail { font-size: 0.78rem; color: var(--text-mid); display: flex; align-items: center; gap: 5px; }
+  .prop-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+    border-top: 1px solid rgba(10,22,40,0.06);
+    background: rgba(10,22,40,0.02);
+  }
+  .prop-cta {
+    font-size: 0.78rem; color: var(--gold); font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: gap 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .prop-cta:hover { gap: 10px; }
+
+  /* ── WHY US ── */
+  #why {
+    background: var(--navy);
+    position: relative; overflow: hidden;
+  }
+  #why::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, rgba(201,168,76,0.02) 0, rgba(201,168,76,0.02) 1px, transparent 0, transparent 50%);
+    background-size: 40px 40px;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; margin-top: 60px;
+  }
+  .why-left p {
+    color: rgba(255,255,255,0.5); font-size: 1rem;
+    line-height: 1.8; font-weight: 300; margin-top: 20px;
+    max-width: 400px;
+  }
+  .why-numbers {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-top: 40px;
+  }
+  .why-num-box {
+    border: 1px solid var(--border);
+    padding: 24px; position: relative;
+  }
+  .why-num-box::after {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 40px; background: var(--gold);
+  }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 700; color: var(--gold); line-height: 1;
+  }
+  .why-num-label { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 6px; }
+
+  .features-list { display: flex; flex-direction: column; gap: 20px; }
+  .feature-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .feature-item:hover { background: rgba(201,168,76,0.04); }
+  .feature-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(201,168,76,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .feature-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+  .feature-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--white); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px; margin-top: 56px;
+  }
+  .testi-card {
+    background: var(--cream);
+    border: 1px solid rgba(10,22,40,0.06);
+    padding: 32px;
+    position: relative;
+    transition: box-shadow 0.3s;
+  }
+  .testi-card:hover { box-shadow: 0 12px 40px rgba(10,22,40,0.08); }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; line-height: 0.5;
+    color: var(--gold); opacity: 0.4;
+    margin-bottom: 16px;
+  }
+  .testi-text {
+    font-size: 0.92rem; color: var(--text-mid);
+    line-height: 1.75; font-style: italic;
+    margin-bottom: 24px;
+  }
+  .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--navy); display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 0.88rem; font-weight: 600; color: var(--text-dark); }
+  .testi-role { font-size: 0.75rem; color: var(--text-light); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    position: relative;
+  }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; margin-top: 60px;
+  }
+  .contact-info { position: relative; z-index: 1; }
+  .contact-tagline {
+    font-size: 0.95rem; color: rgba(255,255,255,0.5);
+    line-height: 1.8; margin: 20px 0 40px; font-weight: 300;
+  }
+  .contact-ctas { display: flex; flex-direction: column; gap: 14px; }
+  .cta-wa {
+    display: flex; align-items: center; gap: 14px;
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    color: white;
+    padding: 16px 28px; text-decoration: none;
+    font-weight: 600; font-size: 0.92rem;
+    transition: opacity 0.3s;
+  }
+  .cta-wa:hover { opacity: 0.88; }
+  .cta-call {
+    display: flex; align-items: center; gap: 14px;
+    background: transparent; color: var(--white);
+    padding: 16px 28px; text-decoration: none;
+    font-weight: 500; font-size: 0.92rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s;
+  }
+  .cta-call:hover { border-color: var(--gold); color: var(--gold); }
+
+  .contact-office {
+    margin-top: 36px;
+    padding: 24px;
+    border: 1px solid var(--border);
+  }
+  .office-label { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  .office-addr { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+  .contact-form { position: relative; z-index: 1; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .form-group label { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group select option { background: var(--navy); }
+  .form-group textarea { height: 100px; resize: none; }
+  .form-submit {
+    width: 100%; background: var(--gold); color: var(--navy);
+    border: none; padding: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 0.88rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.3s;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* MAP */
+  .map-wrap {
+    margin-top: 80px;
+    height: 360px; overflow: hidden;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .map-wrap iframe { width: 100%; height: 100%; border: 0; filter: grayscale(40%) invert(5%); }
+  .map-label {
+    position: absolute; top: 20px; left: 20px;
+    background: rgba(10,22,40,0.9);
+    color: var(--gold); font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060f1c;
+    padding: 40px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--gold);
+  }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── FLOATING WA ── */
+  .float-wa {
+    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    color: white;
+    width: 58px; height: 58px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; text-decoration: none;
+    box-shadow: 0 4px 20px rgba(221,42,123,0.4);
+    animation: pulse-wa 2.5s infinite;
+  }
+  @keyframes pulse-wa {
+    0%,100%{ box-shadow: 0 4px 20px rgba(221,42,123,0.4); }
+    50%{ box-shadow: 0 4px 30px rgba(221,42,123,0.7); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 1024px){
+    nav { padding: 16px 32px; }
+    .nav-links { display: none; }
+    section { padding: 70px 32px; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 32px; }
+    .properties-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .testi-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px; }
+    .footer-links { justify-content: center; }
+  }
+  @media(max-width: 640px){
+    .properties-grid { grid-template-columns: 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .why-numbers { grid-template-columns: 1fr 1fr; }
+    .prop-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+
+  /* Animate on scroll */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Snehil <span>Real Estate</span></div>
+  <ul class="nav-links">
+<li><a href="#why">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://instagram.com/snehil_realestate" class="nav-cta" target="_blank">📸 Follow on Instagram</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-badge">Trusted Real Estate Partner in Pune</div>
+    <h1 class="hero-h1">Find Your Dream<em>Property in Pune</em></h1>
+    <p class="hero-sub">Trusted by 100+ happy clients for buying & selling premium residential and commercial properties across Pune's finest neighbourhoods.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Contact Us
+      </a>
+      <a href="https://instagram.com/snehil_realestate" class="btn-secondary" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Follow on Instagram
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">100+</div>
+        <div class="hero-stat-label">Happy Clients</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">7+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">200+</div>
+        <div class="hero-stat-label">Properties Listed</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">RERA</div>
+        <div class="hero-stat-label">Certified Partner</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80" alt="Luxury Property Pune">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-property-badge">
+      <div class="hpb-label">Featured Listing</div>
+      <div class="hpb-price">₹1.2 Cr</div>
+      <div class="hpb-loc">📍 Baner, Pune</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-left fade-up">
+      <div class="section-label" style="color:var(--gold)">Why Snehil</div>
+      <h2 class="section-h2 light">Why Choose <em>Us</em></h2>
+      <p>We bring together local expertise, verified listings, and genuine care to make your property journey seamless — whether you're buying, selling, or renting in Pune.</p>
+      <div class="why-numbers">
+        <div class="why-num-box">
+          <div class="why-num">100+</div>
+          <div class="why-num-label">Happy Clients</div>
+        </div>
+        <div class="why-num-box">
+          <div class="why-num">200+</div>
+          <div class="why-num-label">Properties Closed</div>
+        </div>
+        <div class="why-num-box">
+          <div class="why-num">7+</div>
+          <div class="why-num-label">Years in Pune</div>
+        </div>
+        <div class="why-num-box">
+          <div class="why-num">4.9★</div>
+          <div class="why-num-label">Client Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="features-list fade-up">
+      <div class="feature-item">
+        <div class="feature-icon">✅</div>
+        <div>
+          <div class="feature-title">RERA Verified Listings</div>
+          <div class="feature-desc">Every property on our platform is RERA registered, ensuring legal clarity and complete peace of mind for buyers.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">💰</div>
+        <div>
+          <div class="feature-title">Best Prices Guaranteed</div>
+          <div class="feature-desc">Our deep market knowledge ensures you always get the fairest price — whether buying or selling in Pune.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🏙️</div>
+        <div>
+          <div class="feature-title">Local Expertise</div>
+          <div class="feature-desc">Born and raised in Pune — we know every locality, micro-market, and neighbourhood trend inside out.</div>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤝</div>
+        <div>
+          <div class="feature-title">End-to-End Support</div>
+          <div class="feature-desc">From site visits and paperwork to home loan assistance, we guide you at every step of the journey.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="text-align:center;" class="fade-up">
+    <div class="section-label" style="justify-content:center;">Client Stories</div>
+    <h2 class="section-h2">What Our Clients <em>Say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-up">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Great service! Snehil Real Estate helped me find my dream home in Baner within 3 weeks. The team was transparent, quick, and made the whole process stress-free.</div>
+      <div class="testi-author">
+        <div class="testi-avatar">R</div>
+        <div>
+          <div class="testi-name">Rahul Mehta</div>
+          <div class="testi-role">Homebuyer, Baner</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Sold my flat in Wakad at the best possible price. Their market knowledge is exceptional — they even helped coordinate with my bank for the paperwork. Truly end-to-end!</div>
+      <div class="testi-author">
+        <div class="testi-avatar">P</div>
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-role">Seller, Wakad</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">Being an NRI, finding a trusted agent in Pune was tough. Snehil Real Estate handled everything remotely — site visits on video call, legal checks, registration. Highly recommended!</div>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <div class="testi-name">Ankit Joshi</div>
+          <div class="testi-role">NRI Buyer, Kalyani Nagar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="text-align:center;" class="fade-up">
+    <div class="section-label" style="justify-content:center;color:var(--gold)">Get In Touch</div>
+    <h2 class="section-h2 light">Let's Find Your <em>Perfect Property</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fade-up">
+      <p class="contact-tagline">Reach out to us on Instagram or fill the form below. We typically respond within minutes.</p>
+      <div class="contact-ctas">
+        <a href="https://instagram.com/snehil_realestate" class="cta-wa" target="_blank">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Message us on Instagram — @snehil_realestate
+        </a>
+
+      </div>
+
+    </div>
+    <div class="contact-form fade-up">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Rahul Mehta">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="rahul@example.com">
+      </div>
+      <div class="form-group">
+        <label>I'm Looking To</label>
+        <select>
+          <option>Buy a Property</option>
+          <option>Sell my Property</option>
+          <option>Rent a Property</option>
+          <option>Invest in Real Estate</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us about the property you're looking for…"></textarea>
+      </div>
+      <button class="form-submit" onclick="window.open('https://instagram.com/snehil_realestate', '_blank')">Send Enquiry →</button>
+    </div>
+  </div>
+
+  <div class="map-wrap fade-up">
+    <div class="map-label">📍 Our Location — Pune</div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121058.92836869865!2d73.7908954!3d18.5245649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699961234567"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Snehil Real Estate</div>
+  <div class="footer-copy">© 2024 Snehil Real Estate. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#properties">Properties</a>
+    <a href="#why">About</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://instagram.com/snehil_realestate" class="float-wa" target="_blank" title="Follow on Instagram">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+</a>
+
+<script>
+  // Filter buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
